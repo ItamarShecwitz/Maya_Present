@@ -104,8 +104,6 @@
         let joystickOffset = { x: 0, y: 0 };
         let joystickPosition = { x: 0, y: 0 };
 
-        let draggingJoystickTrigger = false;
-
         // Function to move joystick to a new position
         function moveJoystickTo(x, y) {
             joystick.style.left = `${x - 50}px`; // Center the joystick
@@ -124,12 +122,11 @@
             // Set joystick active and adjust the center point
             joystickActive = true;
             joystickOffset = { x: e.offsetX, y: e.offsetY }; // Set new center offset for joystick movement
-            draggingJoystickTrigger = true;
         });
 
         // When moving the joystick's trigger area (while dragging)
         joystickTrigger.addEventListener('pointermove', (e) => {
-            if (draggingJoystickTrigger) {
+            if (joystickActive) {
                 const triggerX = e.clientX;
                 const triggerY = e.clientY;
 
@@ -140,9 +137,9 @@
             }
         });
 
-        // When the pointer is released, stop dragging
+        // When the pointer is released, stop tracking
         joystickTrigger.addEventListener('pointerup', () => {
-            draggingJoystickTrigger = false;
+            joystickActive = false;
         });
 
         joystick.addEventListener('pointerdown', (e) => {
