@@ -50,20 +50,20 @@
         });
 
         const player = {
-            x: canvas.width / 2 - 25,
-            y: canvas.height / 2 - 25,
-            width: 50,
-            height: 50,
+            x: canvas.width / 2,
+            y: canvas.height / 2,
+            width: 25, // Smaller size for zoomed-out effect
+            height: 25,
             color: 'white',
-            speed: 5,
+            speed: 2, // Slower speed for zoomed-out effect
         };
 
         const background = {
             image: new Image(),
             x: 0,
             y: 0,
-            width: 1920,
-            height: 1080
+            width: 3840, // Larger map size
+            height: 2160
         };
         background.image.src = 'background-image.png'; // Use your image path
 
