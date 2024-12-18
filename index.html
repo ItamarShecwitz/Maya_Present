@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top View Web Game</title>
+    <title>Maya's Game</title>
     <style>
         body {
             margin: 0;
@@ -22,36 +22,9 @@
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
 
-        // Set canvas to 16:9 ratio and fit window size
-        function resizeCanvas() {
-            const aspectRatio = 16 / 9;
-            const width = window.innerWidth;
-            const height = window.innerHeight;
-            if (width / height > aspectRatio) {
-                canvas.height = height;
-                canvas.width = height * aspectRatio;
-            } else {
-                canvas.width = width;
-                canvas.height = width / aspectRatio;
-            }
-        }
-
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        const keys = {};
-
-        window.addEventListener('keydown', (e) => {
-            keys[e.key] = true;
-        });
-
-        window.addEventListener('keyup', (e) => {
-            keys[e.key] = false;
-        });
-
         const player = {
-            x: canvas.width / 2,
-            y: canvas.height / 2,
+            x: 0,
+            y: 0,
             width: 25, // Smaller size for zoomed-out effect
             height: 25,
             color: 'white',
@@ -62,10 +35,29 @@
             image: new Image(),
             x: 0,
             y: 0,
-            width: 3840, // Larger map size
-            height: 2160
+            width: 3000, // Adjusted to support a larger map
+            height: 2000
         };
         background.image.src = 'background-image.png'; // Use your image path
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            player.x = canvas.width / 2 - player.width / 2;
+            player.y = canvas.height / 2 - player.height / 2;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+
+        const keys = {};
+
+        window.addEventListener('keydown', (e) => {
+            keys[e.key] = true;
+        });
+
+        window.addEventListener('keyup', (e) => {
+            keys[e.key] = false;
+        });
 
         function drawBackground() {
             ctx.drawImage(
@@ -101,7 +93,10 @@
             requestAnimationFrame(gameLoop);
         }
 
-        gameLoop();
+        background.image.onload = () => {
+            resizeCanvas();
+            gameLoop();
+        };
     </script>
 </body>
 </html>
