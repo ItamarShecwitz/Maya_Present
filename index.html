@@ -13,6 +13,18 @@
             display: block;
             background: #000;
         }
+
+        /* Invisible square to trigger joystick movement */
+        #joystick-trigger {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            bottom: 0px; /* Position it wherever you want */
+            left: 0px;
+            background: rgba(0, 0, 0, 1); /* Invisible square */
+            touch-action: none;
+        }
+
         #joystick {
             position: absolute;
             bottom: 20px;
@@ -23,6 +35,7 @@
             border-radius: 50%;
             touch-action: none;
         }
+
         #joystick-inner {
             position: absolute;
             width: 50px;
@@ -32,12 +45,13 @@
             top: 25px;
             left: 25px;
             transform: translate(0, 0);
-            transition: transform 0.1s ease-out; /* Add easing for smooth return */
+            transition: transform 0.1s ease-out;
         }
     </style>
 </head>
 <body>
     <canvas id="gameCanvas"></canvas>
+    <div id="joystick-trigger"></div> <!-- Invisible trigger area -->
     <div id="joystick">
         <div id="joystick-inner"></div>
     </div>
@@ -90,6 +104,26 @@
         let joystickOffset = { x: 0, y: 0 };
         let joystickPosition = { x: 0, y: 0 };
 
+        // Function to move joystick to a new position
+        function moveJoystickTo(x, y) {
+            joystick.style.left = `${x - 50}px`; // Center the joystick
+            joystick.style.top = `${y - 50}px`;
+        }
+
+        // When clicking on the invisible square (joystick trigger), move joystick there
+        const joystickTrigger = document.getElementById('joystick-trigger');
+        joystickTrigger.addEventListener('pointerdown', (e) => {
+            const triggerX = e.clientX;
+            const triggerY = e.clientY;
+
+            // Move joystick to the pointer position
+            moveJoystickTo(triggerX, triggerY);
+
+            // Set joystick active and adjust the center point
+            joystickActive = true;
+            joystickOffset = { x: e.offsetX, y: e.offsetY }; // Set new center offset for joystick movement
+        });
+
         joystick.addEventListener('pointerdown', (e) => {
             joystickActive = true;
             joystickOffset = { x: e.offsetX, y: e.offsetY };
@@ -120,8 +154,8 @@
 
         joystick.addEventListener('pointerup', () => {
             joystickActive = false;
-            joystickInner.style.transform = 'translate(0, 0)'; // smooth return with transition
-            joystickPosition = { x: 0, y: 0 }; // Reset position
+            joystickInner.style.transform = 'translate(0, 0)';
+            joystickPosition = { x: 0, y: 0 };
         });
 
         function drawBackground() {
@@ -145,7 +179,6 @@
             if (keys['ArrowLeft'] || keys['a']) background.x += player.speed;
             if (keys['ArrowRight'] || keys['d']) background.x -= player.speed;
 
-            // Keep the background within bounds
             background.x = Math.min(0, Math.max(canvas.width - background.width, background.x));
             background.y = Math.min(0, Math.max(canvas.height - background.height, background.y));
         }
