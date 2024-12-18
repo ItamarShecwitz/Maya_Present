@@ -12,6 +12,7 @@ const player = {
     height: 25,  // Player's height
     color: 'white',  // Player's color
     speed: 2,  // Player's movement speed
+    joystick_speed: 0.015,
 };
 
 // Define the background object
@@ -80,10 +81,13 @@ function updatePlayer() {
     if (keys['ArrowRight'] || keys['d']) background.x -= player.speed;
 
     // Use the joystick to update the player position
-    if (joystick.up()) player.y -= player.speed;  // Move up
-    if (joystick.down()) player.y += player.speed;  // Move down
-    if (joystick.left()) player.x -= player.speed;  // Move left
-    if (joystick.right()) player.x += player.speed;  // Move right
+    background.x -= joystick.deltaX() * player.joystick_speed;
+    background.y -= joystick.deltaY() * player.joystick_speed;
+
+    // if (joystick.up()) player.y -= player.speed;  // Move up
+    // if (joystick.down()) player.y += player.speed;  // Move down
+    // if (joystick.left()) player.x -= player.speed;  // Move left
+    // if (joystick.right()) player.x += player.speed;  // Move right
 
     // Keep the background within the canvas bounds
     background.x = Math.min(0, Math.max(canvas.width - background.width, background.x));
