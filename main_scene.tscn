@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://v5vaykqexavl"]
+
+[ext_resource type="Texture2D" uid="uid://bn10thv54yvln" path="res://icon.svg" id="1_6gxhc"]
+[ext_resource type="Script" path="res://character_body_2d.gd" id="1_gobcu"]
+[ext_resource type="Texture2D" uid="uid://03527ycrj010" path="res://assets/OuterJoystick.png" id="3_1hn18"]
+[ext_resource type="Script" path="res://joy_stick.gd" id="3_60oil"]
+[ext_resource type="Texture2D" uid="uid://cfpxthkoa01b2" path="res://assets/InnerJoystick.png" id="4_hpxgc"]
+[ext_resource type="Script" path="res://inner_joystick.gd" id="6_kqepa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u84o7"]
+radius = 64.0312
+
+[node name="MainScene" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(946, 546)
+script = ExtResource("1_gobcu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_u84o7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("1_6gxhc")
+
+[node name="JoyStick" type="Node2D" parent="."]
+position = Vector2(245, 844)
+scale = Vector2(0.12, 0.12)
+script = ExtResource("3_60oil")
+
+[node name="OuterJoystick" type="Sprite2D" parent="JoyStick"]
+texture = ExtResource("3_1hn18")
+
+[node name="InnerJoystick" type="Sprite2D" parent="JoyStick"]
+texture = ExtResource("4_hpxgc")
+script = ExtResource("6_kqepa")
+
+[node name="Button" type="Button" parent="JoyStick"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -958.335
+offset_top = -941.668
+offset_right = -950.335
+offset_bottom = -933.668
+scale = Vector2(242.077, 238.962)
+
+[connection signal="button_down" from="JoyStick/Button" to="JoyStick/InnerJoystick" method="_on_button_button_down"]
+[connection signal="button_up" from="JoyStick/Button" to="JoyStick/InnerJoystick" method="_on_button_button_up"]
