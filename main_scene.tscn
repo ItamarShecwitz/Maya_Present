@@ -1,14 +1,60 @@
-[gd_scene load_steps=8 format=3 uid="uid://v5vaykqexavl"]
+[gd_scene load_steps=15 format=4 uid="uid://v5vaykqexavl"]
 
-[ext_resource type="Texture2D" uid="uid://bn10thv54yvln" path="res://icon.svg" id="1_6gxhc"]
 [ext_resource type="Script" path="res://character_body_2d.gd" id="1_gobcu"]
+[ext_resource type="Texture2D" uid="uid://chrwuknejrk2y" path="res://assets/Characters/Maya/walk_anymation.png" id="2_8djke"]
 [ext_resource type="Texture2D" uid="uid://03527ycrj010" path="res://assets/OuterJoystick.png" id="3_1hn18"]
 [ext_resource type="Script" path="res://joy_stick.gd" id="3_60oil"]
 [ext_resource type="Texture2D" uid="uid://cfpxthkoa01b2" path="res://assets/InnerJoystick.png" id="4_hpxgc"]
 [ext_resource type="Script" path="res://inner_joystick.gd" id="6_kqepa"]
+[ext_resource type="Texture2D" uid="uid://3he58bkttpe3" path="res://assets/Tiles/grass.png" id="7_4jq4n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u84o7"]
 radius = 64.0312
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gntah"]
+atlas = ExtResource("2_8djke")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lv86"]
+atlas = ExtResource("2_8djke")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fh2sa"]
+atlas = ExtResource("2_8djke")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sm5qs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gntah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lv86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gntah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fh2sa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m0ok3"]
+texture = ExtResource("7_4jq4n")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_613v5"]
+tile_size = Vector2i(32, 32)
+terrain_set_0/mode = 0
+sources/0 = SubResource("TileSetAtlasSource_m0ok3")
 
 [node name="MainScene" type="Node2D"]
 
@@ -20,7 +66,15 @@ script = ExtResource("1_gobcu")
 shape = SubResource("CircleShape2D_u84o7")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
-texture = ExtResource("1_6gxhc")
+visible = false
+texture = ExtResource("2_8djke")
+hframes = 8
+vframes = 8
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_sm5qs")
+frame = 2
+frame_progress = 0.239771
 
 [node name="JoyStick" type="Node2D" parent="."]
 position = Vector2(245, 844)
@@ -41,6 +95,11 @@ offset_top = -941.668
 offset_right = -950.335
 offset_bottom = -933.668
 scale = Vector2(242.077, 238.962)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+z_index = -1
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAACAAMAAAAAAAAAAAABAAMAAAAAAAAAAAABAAIAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAIAAIAAAAAAAAAAAAbAA8AAAAAAAAAAAAcAA8AAAAAAAAAAAAdAA8AAAAAAAAAAAAeAA8AAAAAAAAAAAAfAA8AAAAAAAAAAAAfABAAAAAAAAAAAAAfABEAAAAAAAAAAAAfABIAAAAAAAAAAAAeABIAAAAAAAAAAAAeABMAAAAAAAAAAAAdABMAAAAAAAAAAAAcABMAAAAAAAAAAAAcABIAAAAAAAAAAAAcABEAAAAAAAAAAAAbABEAAAAAAAAAAAAbABAAAAAAAAAAAAAcABAAAAAAAAAAAAAdABAAAAAAAAAAAAAdABEAAAAAAAAAAAAdABIAAAAAAAAAAAAeABAAAAAAAAAAAAAeABEAAAAAAAAAAAAbABIAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_613v5")
 
 [connection signal="button_down" from="JoyStick/Button" to="JoyStick/InnerJoystick" method="_on_button_button_down"]
 [connection signal="button_up" from="JoyStick/Button" to="JoyStick/InnerJoystick" method="_on_button_button_up"]
