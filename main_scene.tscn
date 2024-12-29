@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://v5vaykqexavl"]
+[gd_scene load_steps=21 format=4 uid="uid://v5vaykqexavl"]
 
 [ext_resource type="Script" path="res://character_body_2d.gd" id="1_gobcu"]
 [ext_resource type="Texture2D" uid="uid://chrwuknejrk2y" path="res://assets/Characters/Maya/walk_anymation.png" id="2_8djke"]
@@ -11,37 +11,164 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_u84o7"]
 radius = 64.0312
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gntah"]
-atlas = ExtResource("2_8djke")
-region = Rect2(0, 0, 16, 32)
+[sub_resource type="Animation" id="Animation_kjd1k"]
+resource_name = "IdleBack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [8, 9]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7lv86"]
-atlas = ExtResource("2_8djke")
-region = Rect2(16, 0, 16, 32)
+[sub_resource type="Animation" id="Animation_g4akd"]
+resource_name = "IdleFront"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fh2sa"]
-atlas = ExtResource("2_8djke")
-region = Rect2(32, 0, 16, 32)
+[sub_resource type="Animation" id="Animation_1mtce"]
+resource_name = "IdleSide"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 5]
+}
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_sm5qs"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gntah")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7lv86")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gntah")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fh2sa")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="Animation" id="Animation_i6luu"]
+resource_name = "WalkBack"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 10, 8, 11]
+}
+
+[sub_resource type="Animation" id="Animation_0ogwo"]
+resource_name = "WalkFront"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 2, 0, 3]
+}
+
+[sub_resource type="Animation" id="Animation_enbyb"]
+resource_name = "WalkSide"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 6, 4, 7]
+}
+
+[sub_resource type="Animation" id="Animation_68omk"]
+resource_name = "IdleRSide"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [12, 13]
+}
+
+[sub_resource type="Animation" id="Animation_db3kq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+
+[sub_resource type="Animation" id="Animation_qo28l"]
+resource_name = "WalkRSide"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 14, 12, 15]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v8ncv"]
+_data = {
+"IdleBack": SubResource("Animation_kjd1k"),
+"IdleFront": SubResource("Animation_g4akd"),
+"IdleRSide": SubResource("Animation_68omk"),
+"IdleSide": SubResource("Animation_1mtce"),
+"RESET": SubResource("Animation_db3kq"),
+"WalkBack": SubResource("Animation_i6luu"),
+"WalkFront": SubResource("Animation_0ogwo"),
+"WalkRSide": SubResource("Animation_qo28l"),
+"WalkSide": SubResource("Animation_enbyb")
+}
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m0ok3"]
 texture = ExtResource("7_4jq4n")
@@ -66,15 +193,18 @@ script = ExtResource("1_gobcu")
 shape = SubResource("CircleShape2D_u84o7")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
-visible = false
+position = Vector2(11, 4)
+scale = Vector2(8, 8)
 texture = ExtResource("2_8djke")
-hframes = 8
-vframes = 8
+hframes = 4
+vframes = 4
+frame = 12
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
-sprite_frames = SubResource("SpriteFrames_sm5qs")
-frame = 2
-frame_progress = 0.239771
+[node name="Animations" type="AnimationPlayer" parent="Player"]
+libraries = {
+"": SubResource("AnimationLibrary_v8ncv")
+}
+autoplay = "IdleFront"
 
 [node name="JoyStick" type="Node2D" parent="."]
 position = Vector2(245, 844)
