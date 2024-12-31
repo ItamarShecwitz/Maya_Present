@@ -1,5 +1,4 @@
 extends Node2D
-@onready var main_scene: Node2D = $".."
 @onready var window : Window = get_window()	
 
 var posVector: Vector2

@@ -1,14 +1,14 @@
 class_name Player extends CharacterBody2D
-@onready var joy_stick: Node2D = $"../JoyStick"
+@onready var joy_stick: Node2D = $"../CanvasLayer/JoyStick"
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var animations: AnimationPlayer = $Animations
-var animation_direction  = "Idle"
-var animation_state = "Front"
+var animation_direction = "Front"
+var animation_state = "Idle"
 
 const SPEED = 300.0
 #const SPEED = 1
 func _ready() -> void:
-	global_position = Vector2(DisplayServer.screen_get_size().x/2, DisplayServer.screen_get_size().y/2)
+	pass
 func _process( delta ):
 	
 	var direction : Vector2 = Vector2.ZERO
