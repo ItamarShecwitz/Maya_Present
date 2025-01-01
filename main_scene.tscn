@@ -1,10 +1,11 @@
-[gd_scene load_steps=30 format=4 uid="uid://v5vaykqexavl"]
+[gd_scene load_steps=34 format=4 uid="uid://v5vaykqexavl"]
 
 [ext_resource type="Script" path="res://character_body_2d.gd" id="1_gobcu"]
 [ext_resource type="Texture2D" uid="uid://chrwuknejrk2y" path="res://assets/Characters/Maya/walk_anymation.png" id="2_8djke"]
 [ext_resource type="Texture2D" uid="uid://dulwv3a4gvfkc" path="res://assets/Pictures/hi.webp" id="2_77t2o"]
 [ext_resource type="Texture2D" uid="uid://03527ycrj010" path="res://assets/OuterJoystick.png" id="3_1hn18"]
 [ext_resource type="Script" path="res://joy_stick.gd" id="3_60oil"]
+[ext_resource type="Script" path="res://little_sign.gd" id="3_v4j3v"]
 [ext_resource type="Texture2D" uid="uid://cfpxthkoa01b2" path="res://assets/InnerJoystick.png" id="4_hpxgc"]
 [ext_resource type="Script" path="res://inner_joystick.gd" id="6_kqepa"]
 [ext_resource type="Texture2D" uid="uid://dsxu3u7873bjg" path="res://assets/Tiles/Sprites.png" id="7_oqbit"]
@@ -308,8 +309,107 @@ texture = ExtResource("7_oqbit")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_tdjix")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4io3p"]
-size = Vector2(50.0252, 63.6956)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mjf03"]
+texture = ExtResource("7_oqbit")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+14:1/0 = 0
+15:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+14:2/0 = 0
+15:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+14:3/0 = 0
+15:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+0:5/0 = 0
+0:5/0/y_sort_origin = -6
+0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, 5, 7, 5, 7, 8, -7, 8)
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ju03j"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_mjf03")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_umb7h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dw543"]
+radius = 259.447
 
 [sub_resource type="Animation" id="Animation_kjd1k"]
 resource_name = "IdleBack"
@@ -520,6 +620,22 @@ scale = Vector2(0.13, 0.13)
 texture = ExtResource("2_77t2o")
 offset = Vector2(0, -390.61)
 
+[node name="LittleSign" type="Node2D" parent="Node2D"]
+y_sort_enabled = true
+script = ExtResource("3_v4j3v")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Node2D/LittleSign"]
+z_index = 1
+y_sort_enabled = true
+scale = Vector2(8, 8)
+tile_map_data = PackedByteArray("AAAFAAUAAAAAAAUAAAA=")
+tile_set = SubResource("TileSet_ju03j")
+
+[node name="Area2D" type="Area2D" parent="Node2D/LittleSign"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/LittleSign/Area2D"]
+shape = SubResource("RectangleShape2D_umb7h")
+
 [node name="Sign" type="Node2D" parent="Node2D"]
 y_sort_enabled = true
 
@@ -545,9 +661,10 @@ position = Vector2(946, 546)
 script = ExtResource("1_gobcu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(12.5, 115.5)
-scale = Vector2(0.939527, -0.518089)
-shape = SubResource("RectangleShape2D_4io3p")
+position = Vector2(-242, 204)
+scale = Vector2(1.019, 1)
+shape = SubResource("CircleShape2D_dw543")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 position = Vector2(11, 4)
