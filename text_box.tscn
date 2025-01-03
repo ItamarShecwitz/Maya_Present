@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8kcpxnscigop"]
+[gd_scene load_steps=3 format=3 uid="uid://c8kcpxnscigop"]
 
 [ext_resource type="Script" path="res://text_box.gd" id="1_taoao"]
+[ext_resource type="FontFile" uid="uid://cc8bfg5phhes8" path="res://assets/Fonts/STANB___.TTF" id="2_bgxup"]
 
 [node name="TextBox" type="CanvasLayer"]
 script = ExtResource("1_taoao")
@@ -13,7 +14,7 @@ anchor_bottom = 1.0
 offset_top = -286.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/margin_left = 64
+theme_override_constants/margin_left = 364
 theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 64
@@ -41,5 +42,5 @@ layout_mode = 2
 [node name="Label" type="Label" parent="TextBoxContainer/Panel/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("2_bgxup")
 theme_override_font_sizes/font_size = 46
-text = "היום שבו נסענו בפעם הראשונה."
