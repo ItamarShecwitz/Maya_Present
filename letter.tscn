@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://vtuoujp0a5pp"]
+
+[ext_resource type="Script" path="res://letter.gd" id="1_vbhfq"]
+[ext_resource type="Texture2D" uid="uid://b0sjnj2e7764s" path="res://assets/Tiles/XUI.png" id="2_jvw3v"]
+
+[node name="letter" type="Node2D"]
+z_index = 5
+script = ExtResource("1_vbhfq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.17, 0.17, 0.17, 0.4)
+
+[node name="X_button" type="Node2D" parent="CanvasLayer"]
+position = Vector2(1770, 144)
+scale = Vector2(8, 8)
+
+[node name="X" type="Sprite2D" parent="CanvasLayer/X_button"]
+texture = ExtResource("2_jvw3v")
+
+[node name="Button" type="Button" parent="CanvasLayer/X_button"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -11.0
+offset_top = -10.0
+offset_right = 11.0
+offset_bottom = 10.0
+
+[connection signal="pressed" from="CanvasLayer/X_button/Button" to="." method="_on_button_pressed"]

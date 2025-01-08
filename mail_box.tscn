@@ -1,0 +1,97 @@
+[gd_scene load_steps=7 format=3 uid="uid://bd4gfrlfnb4um"]
+
+[ext_resource type="Script" path="res://mail_box.gd" id="1_1uhqi"]
+[ext_resource type="Texture2D" uid="uid://cs2rhm04nb8vh" path="res://assets/Tiles/mailbox.png" id="1_f0awd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x1q4f"]
+size = Vector2(15, 30.5)
+
+[sub_resource type="Animation" id="Animation_ltcim"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Exclamation:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Exclamation:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nyidm"]
+resource_name = "float"
+length = 2.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Exclamation:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Exclamation:offset")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -5), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i1ioh"]
+_data = {
+"RESET": SubResource("Animation_ltcim"),
+"float": SubResource("Animation_nyidm")
+}
+
+[node name="MailBox" type="Node2D"]
+script = ExtResource("1_1uhqi")
+
+[node name="Exclamation" type="Sprite2D" parent="."]
+position = Vector2(5, -5)
+texture = ExtResource("1_f0awd")
+centered = false
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-2, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(9.5, 16.25)
+shape = SubResource("RectangleShape2D_x1q4f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_i1ioh")
+}
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_right = 15.0
+offset_bottom = 31.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
