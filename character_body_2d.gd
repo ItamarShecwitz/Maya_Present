@@ -5,7 +5,8 @@ class_name Player extends CharacterBody2D
 var animation_direction = "Front"
 var animation_state = "Idle"
 
-const SPEED = 300.0
+#const SPEED = 300.0
+const SPEED = 1200.0
 #const SPEED = 1
 func _ready() -> void:
 	pass
