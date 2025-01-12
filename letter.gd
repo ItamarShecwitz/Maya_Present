@@ -1,10 +1,17 @@
 extends Node2D
-@onready var x_button: Node2D = $X_button
-
+@onready var window : Window = get_window()	
+@onready var x_button: Node2D = $CanvasLayer/X_button
+@onready var color_rect: ColorRect = $CanvasLayer/ColorRect
+@onready var letter: Sprite2D = $CanvasLayer/letter
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	x_button.global_position = Vector2(window.size.x - 175, 175)
+	
+	color_rect.anchor_left = 0
+	color_rect.anchor_right = 1
+	color_rect.anchor_top = 0
+	color_rect.anchor_bottom = 1
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -13,5 +20,4 @@ func _process(delta: float) -> void:
 
 
 func _on_button_pressed() -> void:
-	print("HA")
-	queue_free()
+	get_parent().prune_button()

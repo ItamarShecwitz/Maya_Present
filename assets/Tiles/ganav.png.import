@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpppt02207evv"
-path="res://.godot/imported/Lamp_post.png-2de0f230e9e432891a281eea9e6eb090.ctex"
+uid="uid://cygw6na1s2t4b"
+path="res://.godot/imported/ganav.png-439d31d02e0e11d130d075fd12dee70a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Tiles/Lamp_post.png"
-dest_files=["res://.godot/imported/Lamp_post.png-2de0f230e9e432891a281eea9e6eb090.ctex"]
+source_file="res://assets/Tiles/ganav.png"
+dest_files=["res://.godot/imported/ganav.png-439d31d02e0e11d130d075fd12dee70a.ctex"]
 
 [params]
 

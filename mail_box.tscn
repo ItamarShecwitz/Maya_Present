@@ -73,7 +73,8 @@ _data = {
 script = ExtResource("1_1uhqi")
 
 [node name="Exclamation" type="Sprite2D" parent="."]
-position = Vector2(5, -5)
+position = Vector2(-5, -14)
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("1_f0awd")
 centered = false
 
