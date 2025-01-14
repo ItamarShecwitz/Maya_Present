@@ -10,6 +10,7 @@ func _ready() -> void:
 	popUp = popUpScene.instantiate()
 	add_child(popUp)
 	popUp.set_text("אני אוהב את העיניים הכחולות שלך")
+	popUp.set_text("א א א א א א א א א א א א א א א א א א א א א א א א א א א א א א א א א א א א א א")
 	popUp.hide_textbox()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
