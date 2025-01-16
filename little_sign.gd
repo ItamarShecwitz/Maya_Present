@@ -9,8 +9,7 @@ func _ready() -> void:
 	popUpScene = preload("res://text_box.tscn")
 	popUp = popUpScene.instantiate()
 	add_child(popUp)
-	popUp.set_text("אני אוהב את העיניים הכחולות שלך")
-	popUp.set_text("א א א א א א א א א א א א א א א א א א א א א א א א א א א א א א א א א א א א א א")
+	popUp.set_text("אני אוהב את הסטייל שלך")
 	popUp.hide_textbox()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
