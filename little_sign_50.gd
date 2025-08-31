@@ -1,6 +1,5 @@
 extends Node2D
 @onready var player: Player = $"../../Player"
-@onready var label: Label = $TextBoxContainer/Panel/MarginContainer/HBoxContainer/Label
 
 var popUpScene
 var popUp
@@ -13,7 +12,7 @@ func _ready() -> void:
 	popUp.hide_textbox()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

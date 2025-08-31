@@ -24,6 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="letter" type="Sprite2D" parent="CanvasLayer/CenterContainer"]
+position = Vector2(0, 24)
 scale = Vector2(0.86875, 0.839301)
 texture = ExtResource("2_hervi")
 

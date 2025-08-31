@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="MayaGodot"
+config/name="HappyBirthdayMaya"
 run/main_scene="res://main_scene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/image="res://assets/logo.png"
 
 [display]
 
@@ -52,3 +52,4 @@ right={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/webp_compression/lossless_compression_factor=25.0

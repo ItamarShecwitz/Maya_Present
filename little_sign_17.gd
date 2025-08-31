@@ -1,6 +1,5 @@
 extends Node2D
 @onready var player: Player = $"../../Player"
-@onready var label: Label = $TextBoxContainer/Panel/MarginContainer/HBoxContainer/Label
 
 var popUpScene
 var popUp

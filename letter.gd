@@ -2,7 +2,6 @@ extends Node2D
 @onready var window : Window = get_window()	
 @onready var x_button: Node2D = $CanvasLayer/X_button
 @onready var color_rect: ColorRect = $CanvasLayer/ColorRect
-@onready var letter: Sprite2D = $CanvasLayer/letter
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,3 +20,8 @@ func _process(delta: float) -> void:
 
 func _on_button_pressed() -> void:
 	get_parent().prune_button()
+
+func set_texture(path):
+	var picture = $CanvasLayer/CenterContainer/letter
+	var new_texture = load(path)
+	picture.texture = new_texture

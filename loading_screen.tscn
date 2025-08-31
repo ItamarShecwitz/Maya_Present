@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4ld4hdu4hiio"]
+
+[ext_resource type="Script" path="res://loading_screen.gd" id="1_pxld6"]
+[ext_resource type="Texture2D" uid="uid://2a8v6k4mb61b" path="res://assets/logo.png" id="2_x4y5x"]
+[ext_resource type="FontFile" uid="uid://byx4iuqowmpbj" path="res://assets/Fonts/Minecraft.ttf" id="3_hsvgl"]
+[ext_resource type="FontFile" uid="uid://cc8bfg5phhes8" path="res://assets/Fonts/STANB___.TTF" id="3_oitwh"]
+
+[node name="LoadingScreen" type="Node2D"]
+script = ExtResource("1_pxld6")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="loading_image" type="Sprite2D" parent="CanvasLayer/CenterContainer"]
+scale = Vector2(16, 16)
+texture = ExtResource("2_x4y5x")
+offset = Vector2(0, -6)
+
+[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_oitwh")
+theme_override_font_sizes/font_size = 100
+text = "
+
+Loading"
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -104.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 1
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("3_hsvgl")
+theme_override_font_sizes/font_size = 100
